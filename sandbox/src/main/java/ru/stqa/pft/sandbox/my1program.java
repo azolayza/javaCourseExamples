@@ -3,26 +3,25 @@ package ru.stqa.pft.sandbox;
 public class my1program {
   public static void main(String[] args) {
     hello("World");
-    hello("Elizaveta");
+    hello("Elizabeth");
     hello("user");
 
-    double len = 5;
-    System.out.println("Площадь квадрата со стороной " + len + " = " + area(len));
+    Square s = new Square(5);
+    System.out.println("Площадь квадрата со стороной " + s.l + " = " + area(s));
 
-    double height = 4;
-    double width = 6;
-    System.out.println("Площадь прямоугольника со сторонами " + height + " и " + width + " = " + area(height, width));
+    Rectangle r = new Rectangle(4,6);
+    System.out.println("Площадь прямоугольника со сторонами " + r.height + " и " + r.width + " = " + area(r));
   }
 
   public static void hello(String user){
     System.out.println("Hello, " + user + "!");
   }
 
-  public static double area(double l){
-    return l * l;
+  public static double area(Square s){
+    return s.l * s.l;
   }
 
-  public static double area(double height, double width){
-    return height*width;
+  public static double area(Rectangle r){
+    return r.height * r.width;
   }
 }
