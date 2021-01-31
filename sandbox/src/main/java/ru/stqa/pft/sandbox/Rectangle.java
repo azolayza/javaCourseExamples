@@ -8,4 +8,8 @@ public class Rectangle {
     this.height = height;
     this.width = width;
   }
+
+  public double area(){
+    return this.height * this.width;
+  }
 }
