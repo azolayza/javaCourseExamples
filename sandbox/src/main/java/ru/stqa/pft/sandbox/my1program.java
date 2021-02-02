@@ -15,7 +15,7 @@ public class my1program {
     //ДЗ2 - вывод значения расстояния между точками р1 и р2
     Point p1 = new Point(1,3);
     Point p2 = new Point(5,8);
-    System.out.println("Расстояние между точками p1 и р2 " + " = " + p1.distance(p1, p2));
+    System.out.println("Расстояние между точками p1 и р2 " + " = " + p1.distance(p2));
   }
 
   public static void hello(String user){
