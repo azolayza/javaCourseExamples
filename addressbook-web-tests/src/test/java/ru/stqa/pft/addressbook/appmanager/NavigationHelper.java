@@ -17,4 +17,9 @@ public class NavigationHelper {
   public void gotoHomePage() {
     wd.findElement(By.linkText("home page")).click();
   }
+
+  public void gotoAddContactForm() {
+    wd.findElement(By.linkText("add new")).click();
+  }
 }
+
