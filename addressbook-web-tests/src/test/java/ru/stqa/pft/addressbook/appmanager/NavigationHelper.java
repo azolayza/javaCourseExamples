@@ -1,12 +1,12 @@
 package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.WebDriver;
 
 public class NavigationHelper {
-  private FirefoxDriver wd;
+  private WebDriver wd;
 
-  public NavigationHelper(FirefoxDriver wd) {
+  public NavigationHelper(WebDriver wd) {
     this.wd = wd;
   }
 
