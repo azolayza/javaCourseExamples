@@ -92,7 +92,7 @@
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
     <property name="show.unlinked.gradle.project.popup" value="true" />
   </component>
-  <component name="RunManager" selected="TestNG.GroupDeletionTests">
+  <component name="RunManager" selected="TestNG.GroupModificationTests">
     <configuration name="GroupCreationTests" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="addressbook-web-tests.test" />
       <extension name="coverage">
@@ -182,9 +182,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="TestNG.GroupModificationTests" />
         <item itemvalue="TestNG.GroupDeletionTests" />
         <item itemvalue="TestNG.GroupCreationTests" />
-        <item itemvalue="TestNG.GroupModificationTests" />
         <item itemvalue="TestNG.GroupCreationTests.testGroupCreation" />
         <item itemvalue="TestNG.GroupDeletionTests.testGroupDeletion" />
       </list>
@@ -222,30 +222,30 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="92" y="92" width="1182" height="544" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1366.728@0.0.1366.728" timestamp="1613990782088" />
-    <state x="445" y="65" key="#com.intellij.ide.util.MemberChooser" timestamp="1613994364493">
+    <state x="445" y="65" key="#com.intellij.ide.util.MemberChooser" timestamp="1614007322281">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="445" y="65" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1613994364493" />
+    <state x="445" y="65" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1614007322281" />
     <state x="463" y="73" key="FileChooserDialogImpl" timestamp="1613926149623">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="73" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1613926149623" />
-    <state width="1323" height="120" key="GridCell.Tab.0.bottom" timestamp="1613994464271">
+    <state width="1323" height="182" key="GridCell.Tab.0.bottom" timestamp="1614007781916">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="120" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1613994464271" />
-    <state width="1323" height="120" key="GridCell.Tab.0.center" timestamp="1613994464271">
+    <state width="1323" height="182" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1614007781916" />
+    <state width="1323" height="182" key="GridCell.Tab.0.center" timestamp="1614007781916">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="120" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1613994464271" />
-    <state width="1323" height="120" key="GridCell.Tab.0.left" timestamp="1613994464271">
+    <state width="1323" height="182" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1614007781916" />
+    <state width="1323" height="182" key="GridCell.Tab.0.left" timestamp="1614007781916">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="120" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1613994464271" />
-    <state width="1323" height="120" key="GridCell.Tab.0.right" timestamp="1613994464271">
+    <state width="1323" height="182" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1614007781916" />
+    <state width="1323" height="182" key="GridCell.Tab.0.right" timestamp="1614007781916">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="120" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1613994464271" />
+    <state width="1323" height="182" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1614007781916" />
     <state x="163" y="0" key="SettingsEditor" timestamp="1613981863208">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
