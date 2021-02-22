@@ -93,19 +93,6 @@
     <property name="show.unlinked.gradle.project.popup" value="true" />
   </component>
   <component name="RunManager" selected="TestNG.GroupDeletionTests">
-    <configuration name="Collections" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ru.stqa.pft.sandbox.Collections" />
-      <module name="sandbox.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ru.stqa.pft.sandbox.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="GroupCreationTests" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="addressbook-web-tests.test" />
       <extension name="coverage">
@@ -117,6 +104,24 @@
       <option name="PACKAGE_NAME" value="ru.stqa.pft.addressbook.tests" />
       <option name="MAIN_CLASS_NAME" value="ru.stqa.pft.addressbook.tests.GroupCreationTests" />
       <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GroupCreationTests.testGroupCreation" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="addressbook-web-tests.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.stqa.pft.addressbook.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ru.stqa.pft.addressbook.tests" />
+      <option name="MAIN_CLASS_NAME" value="ru.stqa.pft.addressbook.tests.GroupCreationTests" />
+      <option name="METHOD_NAME" value="testGroupCreation" />
+      <option name="TEST_OBJECT" value="METHOD" />
       <properties />
       <listeners />
       <method v="2">
@@ -178,10 +183,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="TestNG.GroupDeletionTests" />
-        <item itemvalue="TestNG.GroupCreationTests" />
         <item itemvalue="TestNG.GroupModificationTests" />
+        <item itemvalue="TestNG.GroupCreationTests" />
+        <item itemvalue="TestNG.GroupCreationTests.testGroupCreation" />
         <item itemvalue="TestNG.GroupDeletionTests.testGroupDeletion" />
-        <item itemvalue="Application.Collections" />
       </list>
     </recent_temporary>
   </component>
@@ -221,22 +226,22 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="73" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1613926149623" />
-    <state width="1323" height="227" key="GridCell.Tab.0.bottom" timestamp="1613990739091">
+    <state width="1323" height="227" key="GridCell.Tab.0.bottom" timestamp="1613992166074">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="227" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1613990739091" />
-    <state width="1323" height="227" key="GridCell.Tab.0.center" timestamp="1613990739091">
+    <state width="1323" height="227" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1613992166074" />
+    <state width="1323" height="227" key="GridCell.Tab.0.center" timestamp="1613992166073">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="227" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1613990739091" />
-    <state width="1323" height="227" key="GridCell.Tab.0.left" timestamp="1613990739091">
+    <state width="1323" height="227" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1613992166073" />
+    <state width="1323" height="227" key="GridCell.Tab.0.left" timestamp="1613992166073">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="227" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1613990739091" />
-    <state width="1323" height="227" key="GridCell.Tab.0.right" timestamp="1613990739091">
+    <state width="1323" height="227" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1613992166073" />
+    <state width="1323" height="227" key="GridCell.Tab.0.right" timestamp="1613992166074">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="227" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1613990739091" />
+    <state width="1323" height="227" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1613992166074" />
     <state x="163" y="0" key="SettingsEditor" timestamp="1613981863208">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
