@@ -85,6 +85,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../sandbox/build.gradle" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -92,7 +93,7 @@
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
     <property name="show.unlinked.gradle.project.popup" value="true" />
   </component>
-  <component name="RunManager" selected="TestNG.ContactDeletionTests">
+  <component name="RunManager" selected="TestNG.ru.stqa.pft.addressbook.tests">
     <configuration name="ContactCreationTests" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="addressbook-web-tests.test" />
       <extension name="coverage">
@@ -144,23 +145,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GroupCreationTests" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="addressbook-web-tests.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ru.stqa.pft.addressbook.tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ru.stqa.pft.addressbook.tests" />
-      <option name="MAIN_CLASS_NAME" value="ru.stqa.pft.addressbook.tests.GroupCreationTests" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="GroupDeletionTests" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="addressbook-web-tests.test" />
       <extension name="coverage">
@@ -178,13 +162,29 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ru.stqa.pft.addressbook.tests" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="addressbook-web-tests.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.stqa.pft.addressbook.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ru.stqa.pft.addressbook.tests" />
+      <option name="TEST_OBJECT" value="PACKAGE" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="TestNG.ru.stqa.pft.addressbook.tests" />
         <item itemvalue="TestNG.ContactDeletionTests" />
         <item itemvalue="TestNG.ContactModificationTests" />
         <item itemvalue="TestNG.ContactCreationTests" />
         <item itemvalue="TestNG.GroupDeletionTests" />
-        <item itemvalue="TestNG.GroupCreationTests" />
       </list>
     </recent_temporary>
   </component>
@@ -220,33 +220,37 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="92" y="92" width="1182" height="544" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1366.728@0.0.1366.728" timestamp="1614187433822" />
-    <state x="445" y="65" key="#com.intellij.ide.util.MemberChooser" timestamp="1614189537616">
+    <state x="445" y="65" key="#com.intellij.ide.util.MemberChooser" timestamp="1614359066228">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="445" y="65" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1614189537616" />
+    <state x="445" y="65" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1614359066228" />
     <state x="463" y="73" key="FileChooserDialogImpl" timestamp="1613926149623">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="73" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1613926149623" />
-    <state width="1323" height="30" key="GridCell.Tab.0.bottom" timestamp="1614191348340">
+    <state width="1323" height="161" key="GridCell.Tab.0.bottom" timestamp="1614357382636">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="30" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1614191348340" />
-    <state width="1323" height="30" key="GridCell.Tab.0.center" timestamp="1614191348340">
+    <state width="1323" height="161" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1614357382636" />
+    <state width="1323" height="161" key="GridCell.Tab.0.center" timestamp="1614357382636">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="30" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1614191348340" />
-    <state width="1323" height="30" key="GridCell.Tab.0.left" timestamp="1614191348340">
+    <state width="1323" height="161" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1614357382636" />
+    <state width="1323" height="161" key="GridCell.Tab.0.left" timestamp="1614357382636">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="30" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1614191348340" />
-    <state width="1323" height="30" key="GridCell.Tab.0.right" timestamp="1614191348340">
+    <state width="1323" height="161" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1614357382636" />
+    <state width="1323" height="161" key="GridCell.Tab.0.right" timestamp="1614357382636">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="30" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1614191348340" />
+    <state width="1323" height="161" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1614357382636" />
     <state x="163" y="0" key="SettingsEditor" timestamp="1614010160052">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="163" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1614010160052" />
+    <state x="413" y="125" key="extract.method.dialog" timestamp="1614358437248">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="413" y="125" key="extract.method.dialog/0.0.1366.728@0.0.1366.728" timestamp="1614358437248" />
   </component>
 </project>

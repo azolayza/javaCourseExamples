@@ -8,15 +8,15 @@ import java.util.List;
 
 public class ContactCreationTests extends TestBase{
 
-  @Test
+  @Test (enabled = false)
   public void testContactCreation() throws Exception {
-    app.getNavigationHelper().gotoHomePage();
-    List<ContactData> before = app.getContactHelper().getContactList();
-    app.getNavigationHelper().gotoAddContactForm();
+    app.goTo().gotoHomePage();
+    List<ContactData> before = app.contact().getContactList();
+    app.goTo().gotoAddContactForm();
     ContactData contact = new ContactData("Kira", "Kivanova", null, "89009003355", "kiraiv@mail.ru", "test11");
-    app.getContactHelper().createContact(contact);
-    app.getNavigationHelper().gotoHomePage();
-    List<ContactData>after = app.getContactHelper().getContactList();
+    app.contact().createContact(contact);
+    app.goTo().gotoHomePage();
+    List<ContactData>after = app.contact().getContactList();
     Assert.assertEquals(after.size(),before.size()+1);
 
     before.add(contact);

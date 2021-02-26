@@ -74,7 +74,7 @@ public class ContactHelper extends HelperBase{
 
       // Создаём объект типа ContactData
       ContactData contact = new ContactData(id, firstname, lastname, null,null, null, null);
-      // И добавляем в этот объект текст, который прочитал в строках
+      // И добавляем в этот объект текст, который прочитали в строках
       contacts.add(contact);
     }
     return contacts;

@@ -7,21 +7,21 @@ import java.util.Comparator;
 import java.util.List;
 
 public class ContactModificationTests extends TestBase{
-  @Test
+  @Test (enabled = false)
   public void testContactModification(){
-      app.getNavigationHelper().gotoHomePage();
-    if (! app.getContactHelper().isThereAContact()) {
-      app.getNavigationHelper().gotoAddContactForm();
-      app.getContactHelper().createContact(new ContactData("Mila", "Ivanova", null, "89009003311", "kiraiv@mail.ru", "test11"));
-      app.getNavigationHelper().gotoHomePage();
+      app.goTo().gotoHomePage();
+    if (! app.contact().isThereAContact()) {
+      app.goTo().gotoAddContactForm();
+      app.contact().createContact(new ContactData("Mila", "Ivanova", null, "89009003311", "kiraiv@mail.ru", "test11"));
+      app.goTo().gotoHomePage();
     }
-    List<ContactData> before = app.getContactHelper().getContactList();
-    app.getContactHelper().clickEditContact(before.size()-1);
+    List<ContactData> before = app.contact().getContactList();
+    app.contact().clickEditContact(before.size()-1);
     ContactData contact = new ContactData(before.get(before.size()-1).getId(),"Lena", "Ivanova", "Lenina 43-2", "89009003351", "lena@mail.ru", null);
-    app.getContactHelper().fillContactForm(contact, false);
-    app.getContactHelper().submitUpdateContactForm();
-    app.getNavigationHelper().gotoHomePage();
-    List<ContactData> after = app.getContactHelper().getContactList();
+    app.contact().fillContactForm(contact, false);
+    app.contact().submitUpdateContactForm();
+    app.goTo().gotoHomePage();
+    List<ContactData> after = app.contact().getContactList();
     Assert.assertEquals(after.size(),before.size());
 
     before.remove(before.size()-1);
