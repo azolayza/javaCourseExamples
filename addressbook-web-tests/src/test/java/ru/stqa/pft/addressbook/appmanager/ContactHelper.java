@@ -6,9 +6,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
+import ru.stqa.pft.addressbook.model.Contacts;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ContactHelper extends HelperBase{
   public ContactHelper(WebDriver wd)  {
@@ -34,11 +37,15 @@ public class ContactHelper extends HelperBase{
 
   }
 
-  public void selectedContact(int index) {
+  public void selectContact(int index) {
     wd.findElements(By.name("selected[]")).get(index).click();
   }
 
-  public void submitDeleteContact() {
+  public void selectContactById(int id) {
+    wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
+  }
+
+  public void submitDelete() {
     click(By.xpath("//input[@value='Delete']"));
     wd.switchTo().alert().accept();
   }
@@ -47,20 +54,40 @@ public class ContactHelper extends HelperBase{
       wd.findElements(By.xpath("//img[@alt='Edit']")).get(index).click();
   }
 
+  public void clickEditContactById(int id) {
+    wd.findElement(By.xpath("//a[@href='edit.php?id=" + id +"']")).click();
+  }
+
   public void submitUpdateContactForm() {
     click(By.xpath("(//input[@name='update'])[2]"));
   }
 
-  public void createContact(ContactData contact) {
+  public void create(ContactData contact) {
     fillContactForm(contact, true);
     submitAddContactForm();
+  }
+
+  public void modify(ContactData contact) {
+    clickEditContactById(contact.getId());
+    fillContactForm(contact, false);
+    submitUpdateContactForm();
+  }
+
+  public void delete(int index) {
+    selectContact(index);
+    submitDelete();
+  }
+
+  public void delete(ContactData contact) {
+    selectContactById(contact.getId());
+    submitDelete();
   }
 
   public boolean isThereAContact() {
     return isElementPresent(By.name("selected[]"));
   }
 
-  public List<ContactData> getContactList() {
+  public List<ContactData> list() {
     // Создание списка
     List<ContactData> contacts = new ArrayList<ContactData>();
     // Поиск строки, из которой берем имя и фамилию
@@ -70,12 +97,24 @@ public class ContactHelper extends HelperBase{
       int id = Integer.parseInt(row.findElement(By.cssSelector("td:nth-child(1) input")).getAttribute("value"));
       String lastname = row.findElement(By.cssSelector("td:nth-child(2)")).getText();
       String firstname = row.findElement(By.cssSelector("td:nth-child(3)")).getText();
+      // добавляем в этот объект текст, который прочитали в строках
+      contacts.add(new ContactData().withId(id).withFirstName(firstname).withLastName(lastname));
+    }
+    return contacts;
+  }
 
-
-      // Создаём объект типа ContactData
-      ContactData contact = new ContactData(id, firstname, lastname, null,null, null, null);
-      // И добавляем в этот объект текст, который прочитали в строках
-      contacts.add(contact);
+  public Contacts all() {
+    // Создание списка
+    Contacts contacts = new Contacts();
+    // Поиск строки, из которой берем имя и фамилию
+    List<WebElement> rows = wd.findElements(By.cssSelector("tr[name='entry']"));
+    // Цикл прохода по этим строкам в цикле и берём имя и фамилию
+    for (WebElement row : rows) {
+      int id = Integer.parseInt(row.findElement(By.cssSelector("td:nth-child(1) input")).getAttribute("value"));
+      String lastname = row.findElement(By.cssSelector("td:nth-child(2)")).getText();
+      String firstname = row.findElement(By.cssSelector("td:nth-child(3)")).getText();
+      // добавляем в этот объект текст, который прочитали в строках
+      contacts.add(new ContactData().withId(id).withFirstName(firstname).withLastName(lastname));
     }
     return contacts;
   }
