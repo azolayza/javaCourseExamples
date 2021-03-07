@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.Groups;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -65,12 +66,14 @@ public class ContactHelper extends HelperBase{
   public void create(ContactData contact) {
     fillContactForm(contact, true);
     submitAddContactForm();
+    contactCache = null;
   }
 
   public void modify(ContactData contact) {
     clickEditContactById(contact.getId());
     fillContactForm(contact, false);
     submitUpdateContactForm();
+    contactCache = null;
   }
 
   public void delete(int index) {
@@ -81,6 +84,7 @@ public class ContactHelper extends HelperBase{
   public void delete(ContactData contact) {
     selectContactById(contact.getId());
     submitDelete();
+    contactCache = null;
   }
 
   public boolean isThereAContact() {
@@ -103,9 +107,14 @@ public class ContactHelper extends HelperBase{
     return contacts;
   }
 
+  private Contacts contactCache = null;
+
   public Contacts all() {
+    if (contactCache != null) {
+      return new Contacts(contactCache);
+    }
     // Создание списка
-    Contacts contacts = new Contacts();
+    contactCache = new Contacts();
     // Поиск строки, из которой берем имя и фамилию
     List<WebElement> rows = wd.findElements(By.cssSelector("tr[name='entry']"));
     // Цикл прохода по этим строкам в цикле и берём имя и фамилию
@@ -114,8 +123,8 @@ public class ContactHelper extends HelperBase{
       String lastname = row.findElement(By.cssSelector("td:nth-child(2)")).getText();
       String firstname = row.findElement(By.cssSelector("td:nth-child(3)")).getText();
       // добавляем в этот объект текст, который прочитали в строках
-      contacts.add(new ContactData().withId(id).withFirstName(firstname).withLastName(lastname));
+      contactCache.add(new ContactData().withId(id).withFirstName(firstname).withLastName(lastname));
     }
-    return contacts;
+    return new Contacts(contactCache);
   }
 }
