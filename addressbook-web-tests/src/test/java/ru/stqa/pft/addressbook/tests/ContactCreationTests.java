@@ -1,6 +1,5 @@
 package ru.stqa.pft.addressbook.tests;
 
-import org.testng.Assert;
 import org.testng.annotations.*;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
@@ -16,16 +15,16 @@ public class ContactCreationTests extends TestBase{
     app.goTo().homePage();
     Contacts before = app.contact().all();
     ContactData contact = new ContactData()
-            .withFirstName("Lena")
-            .withLastName("Lenina")
-            .withPhone("89009002211")
+            .withFirstName("Lina")
+            .withLastName("Menina")
+            .withPhone("89009002215")
             .withEmail("lena@mail.ru")
             .withGroup("new3");
     app.goTo().addForm();
     app.contact().create(contact);
     app.goTo().homePage();
+    assertEquals(app.contact().count(),before.size()+1);
     Contacts after = app.contact().all();
-    assertEquals(after.size(),before.size()+1);
     assertThat(after, equalTo(before
             .withAdded(contact.withId(after.stream().mapToInt((g)-> g.getId()).max().getAsInt()))));
   }

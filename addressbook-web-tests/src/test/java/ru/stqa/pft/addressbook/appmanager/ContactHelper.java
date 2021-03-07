@@ -55,12 +55,23 @@ public class ContactHelper extends HelperBase{
       wd.findElements(By.xpath("//img[@alt='Edit']")).get(index).click();
   }
 
+  private void returnToHomePage() {
+    if (isElementPresent(By.id("maintable"))) {
+      return;
+    }
+    click(By.linkText("home"));
+  }
+
   public void clickEditContactById(int id) {
     wd.findElement(By.xpath("//a[@href='edit.php?id=" + id +"']")).click();
   }
 
   public void submitUpdateContactForm() {
     click(By.xpath("(//input[@name='update'])[2]"));
+  }
+
+  public int count() {
+    return wd.findElements(By.name("selected[]")).size();
   }
 
   public void create(ContactData contact) {
@@ -85,6 +96,7 @@ public class ContactHelper extends HelperBase{
     selectContactById(contact.getId());
     submitDelete();
     contactCache = null;
+    returnToHomePage();
   }
 
   public boolean isThereAContact() {
@@ -127,4 +139,5 @@ public class ContactHelper extends HelperBase{
     }
     return new Contacts(contactCache);
   }
+
 }
