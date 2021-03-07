@@ -7,12 +7,9 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
-import ru.stqa.pft.addressbook.model.Groups;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class ContactHelper extends HelperBase{
   public ContactHelper(WebDriver wd)  {
@@ -27,7 +24,7 @@ public class ContactHelper extends HelperBase{
     type("firstname", contactData.getFirstName());
     type("lastname", contactData.getLastName());
     type("address", contactData.getAddress());
-    type("home", contactData.getPhone());
+    type("home", contactData.getHomePhone());
     type("email", contactData.getEmail());
 
     if (creation) {
@@ -128,16 +125,57 @@ public class ContactHelper extends HelperBase{
     // Создание списка
     contactCache = new Contacts();
     // Поиск строки, из которой берем имя и фамилию
-    List<WebElement> rows = wd.findElements(By.cssSelector("tr[name='entry']"));
+    List<WebElement> rows = wd.findElements(By.name("entry"));
     // Цикл прохода по этим строкам в цикле и берём имя и фамилию
     for (WebElement row : rows) {
-      int id = Integer.parseInt(row.findElement(By.cssSelector("td:nth-child(1) input")).getAttribute("value"));
-      String lastname = row.findElement(By.cssSelector("td:nth-child(2)")).getText();
-      String firstname = row.findElement(By.cssSelector("td:nth-child(3)")).getText();
-      // добавляем в этот объект текст, который прочитали в строках
-      contactCache.add(new ContactData().withId(id).withFirstName(firstname).withLastName(lastname));
+      List<WebElement> cells = row.findElements(By.tagName("td"));
+      int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("value"));
+      String lastname = cells.get(1).getText();
+      String firstname = cells.get(2).getText();
+      String[] phones = cells.get(5).getText().split("\n");
+      // добавляем в этот объект текст, который прочитали в строках, включая разбитые на строки содержимое телефонов
+      contactCache.add(new ContactData().withId(id)
+              .withFirstName(firstname)
+              .withLastName(lastname)
+              .withHomePhone(phones[0])
+              .withMobilePhone(phones[1])
+              .withWorkPhone(phones[2]));
     }
     return new Contacts(contactCache);
   }
+
+  //Метод для извлечения данных из формы редактирования контакта
+  public ContactData infoFromEditForm(ContactData contact) {
+    initContactModificationById(contact.getId());
+    String firstname = wd.findElement(By.name("firstname")).getAttribute("value");
+    String lastname = wd.findElement(By.name("lastname")).getAttribute("value");
+    String home = wd.findElement(By.name("home")).getAttribute("value");
+    String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
+    String work = wd.findElement(By.name("work")).getAttribute("value");
+    wd.navigate().back();
+    return new ContactData().withId(contact.getId())
+            .withFirstName(firstname)
+            .withLastName(lastname)
+            .withHomePhone(home)
+            .withMobilePhone(mobile)
+            .withWorkPhone(work);
+
+  }
+
+  //Метод инициализации кнопки для открытия формы редактирования контакта
+ private void initContactModificationById(int id){
+   wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s'", id))).click();
+
+    /* Варианты нахождения локатора для кнопки-ссылки открытия формы редактирования контакта
+    Вариант длинный с прохождением вглубь
+    WebElement checkbox = wd.findElement(By.cssSelector(String.format("input[value='%s']", id)));
+    WebElement row = wd.findElement(By.xpath("./../.."));
+    List<WebElement> cells = row.findElements(By.tagName("td"));
+    cells.get(7).findElement(By.tagName("a")).click();
+    Варианты  короче:
+    wd.findElement(By.xpath(String.format("//input[value='%s']/../../td[8]/a", id))).click();
+    wd.findElement(By.xpath(String.format("//tr[.//input[value='%s']]/td[8]/a", id))).click();
+    wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s'", id))).click(); */
+ }
 
 }

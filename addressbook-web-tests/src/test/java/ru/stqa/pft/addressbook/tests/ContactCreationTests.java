@@ -17,7 +17,7 @@ public class ContactCreationTests extends TestBase{
     ContactData contact = new ContactData()
             .withFirstName("Lina")
             .withLastName("Menina")
-            .withPhone("89009002215")
+            .withHomePhone("89009002215")
             .withEmail("lena@mail.ru")
             .withGroup("new3");
     app.goTo().addForm();
