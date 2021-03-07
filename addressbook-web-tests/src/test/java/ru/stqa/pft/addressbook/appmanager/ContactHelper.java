@@ -16,23 +16,30 @@ public class ContactHelper extends HelperBase{
     super(wd);
   }
 
+  public void addForm() {
+    if (isElementPresent(By.name("submit"))) {
+      return;
+    }
+    click(By.linkText("add new"));
+  }
+
   public void submitAddContactForm() {
-    click(By.xpath("(//input[@name='submit'])[2]"));
+    click(By.name("submit"));
   }
 
   public void fillContactForm(ContactData contactData, boolean creation) {
     type("firstname", contactData.getFirstName());
     type("lastname", contactData.getLastName());
-    type("address", contactData.getAddress());
-    type("home", contactData.getHomePhone());
+    //type("address", contactData.getAddress());
+    //type("home", contactData.getHomePhone());
     type("email", contactData.getEmail());
+    attach("photo", contactData.getPhoto());
 
     if (creation) {
       new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
     } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
-
   }
 
   public void selectContact(int index) {
@@ -52,7 +59,7 @@ public class ContactHelper extends HelperBase{
       wd.findElements(By.xpath("//img[@alt='Edit']")).get(index).click();
   }
 
-  private void returnToHomePage() {
+  public void returnToHomePage() {
     if (isElementPresent(By.id("maintable"))) {
       return;
     }
@@ -72,6 +79,7 @@ public class ContactHelper extends HelperBase{
   }
 
   public void create(ContactData contact) {
+    addForm();
     fillContactForm(contact, true);
     submitAddContactForm();
     contactCache = null;

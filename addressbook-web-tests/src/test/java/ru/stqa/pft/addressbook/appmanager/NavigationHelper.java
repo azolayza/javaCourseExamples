@@ -25,12 +25,5 @@ public class NavigationHelper extends HelperBase{
     }
     click(By.linkText("home page"));
   }
-
-  public void addForm() {
-    if (isElementPresent(By.name("submit"))) {
-      return;
-    }
-    click(By.linkText("add new"));
-  }
 }
 
