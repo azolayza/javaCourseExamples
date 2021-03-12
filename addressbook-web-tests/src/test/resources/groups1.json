@@ -1,17 +1,17 @@
 [
   {
-    "name": "group0",
-    "header": "headerHH0",
-    "footer": "footerFF0"
+    "name": "newgroup0",
+    "header": "header0",
+    "footer": "footer0"
   },
   {
-    "name": "group1",
-    "header": "headerHH1",
-    "footer": "footerFF1"
+    "name": "newgroup1",
+    "header": "header1",
+    "footer": "footer1"
   },
   {
-    "name": "group2",
-    "header": "headerHH2",
-    "footer": "footerFF2"
+    "name": "newgroup2",
+    "header": "header2",
+    "footer": "footer2"
   }
 ]

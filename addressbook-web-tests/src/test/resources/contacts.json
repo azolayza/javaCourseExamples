@@ -1,17 +1,17 @@
 [
   {
-    "firstName": "Name 0",
-    "lastName": "LastName 0",
-    "homephone": "777 555 0"
+    "firstName": "Mary 0",
+    "lastName": "Ivanova 0",
+    "homephone": "888 555 0"
   },
   {
-    "firstName": "Name 1",
-    "lastName": "LastName 1",
-    "homephone": "777 555 1"
+    "firstName": "Mary 1",
+    "lastName": "Ivanova 1",
+    "homephone": "888 555 1"
   },
   {
-    "firstName": "Name 2",
-    "lastName": "LastName 2",
-    "homephone": "777 555 2"
+    "firstName": "Mary 2",
+    "lastName": "Ivanova 2",
+    "homephone": "888 555 2"
   }
 ]

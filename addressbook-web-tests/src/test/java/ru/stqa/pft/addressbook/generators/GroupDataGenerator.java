@@ -56,9 +56,9 @@ public class GroupDataGenerator {
   private void saveAsJson(List<GroupData> groups, File file) throws IOException {
     Gson gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithoutExposeAnnotation().create();
     String json = gson.toJson(groups);
-    Writer writer = new FileWriter(file);
-    writer.write(json);
-    writer.close();
+    try (Writer writer = new FileWriter(file)){
+      writer.write(json);
+    }
   }
 
   private void saveAsXml(List<GroupData> groups, File file) throws IOException {
@@ -66,27 +66,27 @@ public class GroupDataGenerator {
     xstream.processAnnotations(GroupData.class);
     xstream.alias("group", GroupData.class);
     String xml = xstream.toXML(groups);
-    Writer writer = new FileWriter(file);
-    writer.write(xml);
-    writer.close();
+    try (Writer writer = new FileWriter(file)) {
+      writer.write(xml);
+    }
   }
 
   private void saveAsCsv(List<GroupData> groups, File file) throws IOException {
     System.out.println(new File(".").getAbsolutePath());
-    Writer writer = new FileWriter(file);
-    for (GroupData group : groups){
-      writer.write(String.format("%s;%s;%s\n", group.getName(), group.getHeader(), group.getFooter()));
+    try (Writer writer = new FileWriter(file)) {
+      for (GroupData group : groups){
+        writer.write(String.format("%s;%s;%s\n", group.getName(), group.getHeader(), group.getFooter()));
+      }
     }
-    writer.close();
   }
 
   private List<GroupData> generateGroups(int count) {
     List<GroupData> groups = new ArrayList<GroupData>();
     for (int i= 0; i<count; i++) {
       groups.add(new GroupData()
-              .withName(String.format("group%s", i))
-              .withHeader(String.format("headerHH%s", i))
-              .withFooter(String.format("footerFF%s", i)));
+              .withName(String.format("newgroup%s", i))
+              .withHeader(String.format("header%s", i))
+              .withFooter(String.format("footer%s", i)));
     }
     return groups;
   }

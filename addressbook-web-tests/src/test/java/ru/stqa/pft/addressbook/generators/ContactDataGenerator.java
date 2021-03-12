@@ -59,18 +59,18 @@ public class ContactDataGenerator {
   private void saveAsJson(List<ContactData> contacts, File file) throws IOException {
     Gson gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithoutExposeAnnotation().create();
     String json = gson.toJson(contacts);
-    Writer writer = new FileWriter(file);
-    writer.write(json);
-    writer.close();
+    try (Writer writer = new FileWriter(file)) {
+      writer.write(json);
+    }
   }
 
   private List<ContactData> generateContacts(int count) {
     List<ContactData> contacts = new ArrayList<ContactData>();
     for (int i= 0; i<count; i++) {
       contacts.add(new ContactData()
-              .withFirstName(String.format("Name %s", i))
-              .withLastName(String.format("LastName %s", i))
-              .withHomePhone(String.format("777 555 %s", i)));
+              .withFirstName(String.format("Mary %s", i))
+              .withLastName(String.format("Ivanova %s", i))
+              .withHomePhone(String.format("888 555 %s", i)));
     }
     return contacts;
   }
