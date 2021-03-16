@@ -140,14 +140,14 @@ public class ContactData {
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
+    if (!(o instanceof ContactData)) return false;
     ContactData that = (ContactData) o;
-    return id == that.id && Objects.equals(firstName, that.firstName) && Objects.equals(lastName, that.lastName);
+    return Objects.equals(getFirstName(), that.getFirstName()) && Objects.equals(getLastName(), that.getLastName()) && Objects.equals(getAddress(), that.getAddress()) && Objects.equals(homephone, that.homephone) && Objects.equals(workphone, that.workphone) && Objects.equals(mobilephone, that.mobilephone);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, firstName, lastName);
+    return Objects.hash(getFirstName(), getLastName(), getAddress(), homephone, workphone, mobilephone);
   }
 
   public ContactData withId(int id) {
