@@ -31,9 +31,10 @@ public class ContactModificationTests extends TestBase{
     ContactData contact = new ContactData()
             .withId(modifiedContact.getId())
             .withFirstName("Mila")
-            .withLastName( "Ivanova")
-            .withEmail("kiraiv@mail.ru")
-            .withGroup("new3");
+            .withLastName("Ivanova")
+            .withAddress("lenina str")
+            .withHomePhone("556699")
+            .withEmail("kiraiv@mail.ru");
     app.contact().modify(contact);
     app.goTo().homePage();
     assertEquals(app.contact().count(),before.size());

@@ -2,16 +2,22 @@
   {
     "firstName": "Mary 0",
     "lastName": "Ivanova 0",
-    "homephone": "888 555 0"
+    "address": "Kirova str 0",
+    "homephone": "888 555 0",
+    "email": "name0@mail.ru"
   },
   {
     "firstName": "Mary 1",
     "lastName": "Ivanova 1",
-    "homephone": "888 555 1"
+    "address": "Kirova str 1",
+    "homephone": "888 555 1",
+    "email": "name1@mail.ru"
   },
   {
     "firstName": "Mary 2",
     "lastName": "Ivanova 2",
-    "homephone": "888 555 2"
+    "address": "Kirova str 2",
+    "homephone": "888 555 2",
+    "email": "name2@mail.ru"
   }
 ]

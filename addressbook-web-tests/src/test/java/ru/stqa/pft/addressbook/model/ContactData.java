@@ -23,6 +23,7 @@ public class ContactData {
   @Column(name = "lastname")
   private String lastName;
 
+  @Expose
   @Column(name = "address")
   @Type(type = "text")
   private String address;
@@ -32,18 +33,17 @@ public class ContactData {
   @Type(type = "text")
   private String homephone;
 
-  @Column(name = "work")
-  @Type(type = "text")
+  @Transient
   private String workphone;
-
-  @Column(name = "mobile")
-  @Type(type = "text")
+  @Transient
   private String mobilephone;
-
   @Transient
   private String allPhones;
-  @Transient
+
+  @Expose
+  @Type(type = "text")
   private String email;
+
   @Transient
   private String email2;
   @Transient
@@ -142,12 +142,12 @@ public class ContactData {
     if (this == o) return true;
     if (!(o instanceof ContactData)) return false;
     ContactData that = (ContactData) o;
-    return Objects.equals(getFirstName(), that.getFirstName()) && Objects.equals(getLastName(), that.getLastName()) && Objects.equals(getAddress(), that.getAddress()) && Objects.equals(homephone, that.homephone) && Objects.equals(workphone, that.workphone) && Objects.equals(mobilephone, that.mobilephone);
+    return getId() == that.getId() && Objects.equals(getFirstName(), that.getFirstName()) && Objects.equals(getLastName(), that.getLastName()) && Objects.equals(getAddress(), that.getAddress()) && Objects.equals(homephone, that.homephone) && Objects.equals(getEmail(), that.getEmail());
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(getFirstName(), getLastName(), getAddress(), homephone, workphone, mobilephone);
+    return Objects.hash(getId(), getFirstName(), getLastName(), getAddress(), homephone, getEmail());
   }
 
   public ContactData withId(int id) {

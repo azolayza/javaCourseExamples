@@ -70,7 +70,9 @@ public class ContactDataGenerator {
       contacts.add(new ContactData()
               .withFirstName(String.format("Mary %s", i))
               .withLastName(String.format("Ivanova %s", i))
-              .withHomePhone(String.format("888 555 %s", i)));
+              .withHomePhone(String.format("888 555 %s", i))
+              .withAddress(String.format("Kirova str %s", i))
+              .withEmail(String.format("name%s@mail.ru", i)));
     }
     return contacts;
   }
