@@ -6,6 +6,7 @@ import org.testng.annotations.*;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 import ru.stqa.pft.addressbook.model.GroupData;
+import ru.stqa.pft.addressbook.model.Groups;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -40,7 +41,7 @@ public class ContactCreationTests extends TestBase{
   }
 
   @Test (dataProvider = "validContactsFromJson")
-  public void testContactCreation(ContactData contact) throws Exception {
+  public void testContactCreationWithFile(ContactData contact) throws Exception {
     app.goTo().homePage();
     Contacts before = app.db().contacts();
     app.contact().create(contact);
@@ -52,6 +53,25 @@ public class ContactCreationTests extends TestBase{
     verifyContactListUI();
   }
 
+  @Test
+  public void testContactCreation() throws Exception {
+    Groups groups = app.db().groups();
+    Contacts before = app.db().contacts();
+    ContactData newContact = new ContactData()
+            .withFirstName("LInna")
+            .withLastName("Vetrova")
+            .withAddress("Mirova 23-44")
+            .withHomePhone("442211")
+            .withEmail("petro@mail.ru")
+            .inGroup(groups.iterator().next());
+    app.contact().create(newContact);
+    app.contact().returnToHomePage();
+    assertEquals(app.contact().count(),before.size()+1);
+    Contacts after = app.db().contacts();
+    assertThat(after, equalTo(before
+            .withAdded(newContact.withId(after.stream().mapToInt((g)-> g.getId()).max().getAsInt()))));
+    verifyContactListUI();
+  }
   //тест на определение рабочей директории и наличие нужного файла в ней
   @Test (enabled = false)
   public void testCurrentDir(){

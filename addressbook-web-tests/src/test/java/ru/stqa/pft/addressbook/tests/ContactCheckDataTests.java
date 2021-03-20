@@ -19,8 +19,7 @@ public class ContactCheckDataTests extends TestBase {
               .withFirstName("Inna")
               .withLastName( "Ivanova")
               .withHomePhone("555-55-32")
-              .withEmail("inna@mail.ru")
-              .withGroup("new3"));
+              .withEmail("inna@mail.ru"));
       app.goTo().homePage();
     }
   }

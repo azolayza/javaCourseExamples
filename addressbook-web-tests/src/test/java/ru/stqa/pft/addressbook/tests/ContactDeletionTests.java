@@ -22,8 +22,7 @@ public class ContactDeletionTests extends TestBase{
       app.contact().create(new ContactData()
               .withFirstName("Mila")
               .withLastName( "Ivanova")
-              .withEmail("kiraiv@mail.ru")
-              .withGroup("new1"));
+              .withEmail("kiraiv@mail.ru"));
       app.goTo().homePage();
     }
   }
