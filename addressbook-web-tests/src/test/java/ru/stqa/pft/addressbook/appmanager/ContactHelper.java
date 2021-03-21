@@ -185,25 +185,30 @@ public class ContactHelper extends HelperBase{
             .withEmail3(email3);
   }
 
-  public void addContactToGroup(ContactData contact) {
-    selectContactById(contact.getId());
+  public void addContactToGroup() {
     click(By.name("add"));
     contactCache = null;
     returnToHomePage();
   }
 
-  public void removeContactFromGroup(ContactData contact) {
-    selectContactById(contact.getId());
+  public void removeContactFromGroup() {
     click(By.name("remove"));
     contactCache = null;
     returnToHomePage();
   }
 
-  public void selectGroupPage(){
-    wd.findElement(By.name("group")).click();
-    new Select(wd.findElement(By.name("group"))).selectByVisibleText("newgroup0");
-    wd.findElement(By.xpath("//option[@value='1']")).click();
-    wd.findElement(By.id("1")).click();
+  public void selectGroupPage(Contacts contactData){
+    if (contactData.iterator().next().getGroups().size() > 0) {
+      Assert.assertTrue(contactData.iterator().next().getGroups().size() == 1);
+      new Select(wd.findElement(By.name("group"))).selectByVisibleText(contactData.iterator().next().getGroups().iterator().next().getName());
+    }
+  }
+
+  public void selectGroup(Contacts contactData) {
+    if (contactData.iterator().next().getGroups().size() > 1) {
+      Assert.assertTrue(contactData.iterator().next().getGroups().size() == 1);
+      new Select(wd.findElement(By.name("group"))).selectByVisibleText(contactData.iterator().next().getGroups().iterator().next().getName());
+    }
   }
   //Метод инициализации кнопки для открытия формы редактирования контакта
  private void initContactModificationById(int id){

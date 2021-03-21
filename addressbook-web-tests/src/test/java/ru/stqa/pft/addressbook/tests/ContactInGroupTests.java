@@ -31,30 +31,35 @@ public class ContactInGroupTests extends TestBase{
               .withName("test11")
               .withFooter("testgroup"));
     }
+    Contacts contacts = app.db().contacts();        
+    if(contacts.stream().iterator().next().getGroups().size() == 0) {
+      app.contact().selectContactById(contacts.iterator().next().getId());
+      app.contact().selectGroup(contacts);
+      app.contact().addContactToGroup();
+      app.goTo().homePage();
+    }
   }
 
   @Test
   public void testContactAddToGroup(){
     Contacts before = app.db().contacts();
     Groups groups = app.db().groups();
-    ContactData modifiedContact = before.iterator().next();
-    ContactData contact = new ContactData()
-            .inGroup(groups.iterator().next());;
-    app.contact().addContactToGroup(contact);
-    app.goTo().contactsInGroupAtHome(contact, true);
-    assertEquals(app.contact().count(),before.size());
+    app.contact().selectContactById(before.iterator().next().getId());
+    app.contact().selectGroup(before);
+    app.contact().addContactToGroup();
     Contacts after = app.db().contacts();
-    assertThat(after, equalTo(before.without(modifiedContact).withAdded(contact)));
+    assertThat(before.iterator().next(), equalTo(after.iterator().next()));
     verifyContactListUI();
   }
 
   @Test
   public void testContactRemoveFromGroup() {
-    ContactData contact = new ContactData();
-    app.contact().selectGroupPage();
+    Contacts contacts = app.db().contacts();
+    app.contact().selectGroupPage(contacts);
     Contacts before = app.db().contacts();
-    app.contact().removeContactFromGroup(contact);
-    assertEquals(app.contact().count(),before.size()-1);
+    app.contact().removeContactFromGroup();
+    Contacts after = app.db().contacts();
+    assertThat(contacts.iterator().next(), equalTo(after.iterator().next()));
     verifyContactListUI();
   }
 }
