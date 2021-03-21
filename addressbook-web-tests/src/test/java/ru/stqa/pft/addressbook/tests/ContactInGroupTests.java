@@ -31,7 +31,7 @@ public class ContactInGroupTests extends TestBase{
               .withName("test11")
               .withFooter("testgroup"));
     }
-    Contacts contacts = app.db().contacts();        
+    Contacts contacts = app.db().contacts();
     if(contacts.stream().iterator().next().getGroups().size() == 0) {
       app.contact().selectContactById(contacts.iterator().next().getId());
       app.contact().selectGroup(contacts);
