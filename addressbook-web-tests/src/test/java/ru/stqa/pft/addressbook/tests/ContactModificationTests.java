@@ -30,7 +30,7 @@ public class ContactModificationTests extends TestBase{
     ContactData contact = new ContactData()
             .withId(modifiedContact.getId())
             .withFirstName("Nina")
-            .withLastName("BIvanova")
+            .withLastName("Bаvanova")
             .withAddress("Orlova str")
             .withHomePhone("456649")
             .withEmail("rai@mail.ru");

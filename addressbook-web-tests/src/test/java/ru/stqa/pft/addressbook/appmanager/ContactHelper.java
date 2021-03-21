@@ -91,7 +91,7 @@ public class ContactHelper extends HelperBase{
 
   public void modify(ContactData contact) {
     clickEditContactById(contact.getId());
-    fillContactForm(contact, false);
+    fillContactForm(contact, true);
     submitUpdateContactForm();
     contactCache = null;
   }
@@ -185,6 +185,26 @@ public class ContactHelper extends HelperBase{
             .withEmail3(email3);
   }
 
+  public void addContactToGroup(ContactData contact) {
+    selectContactById(contact.getId());
+    click(By.name("add"));
+    contactCache = null;
+    returnToHomePage();
+  }
+
+  public void removeContactFromGroup(ContactData contact) {
+    selectContactById(contact.getId());
+    click(By.name("remove"));
+    contactCache = null;
+    returnToHomePage();
+  }
+
+  public void selectGroupPage(){
+    wd.findElement(By.name("group")).click();
+    new Select(wd.findElement(By.name("group"))).selectByVisibleText("newgroup0");
+    wd.findElement(By.xpath("//option[@value='1']")).click();
+    wd.findElement(By.id("1")).click();
+  }
   //Метод инициализации кнопки для открытия формы редактирования контакта
  private void initContactModificationById(int id){
    wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s'", id))).click();
