@@ -8,6 +8,7 @@ dependencies {
     compile 'org.testng:testng:7.0.0'
     implementation 'org.seleniumhq.selenium:selenium-java:3.141.59'
     compile 'org.hamcrest:java-hamcrest:2.0.0.0'
+    compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.2'
 }
 
 test {
