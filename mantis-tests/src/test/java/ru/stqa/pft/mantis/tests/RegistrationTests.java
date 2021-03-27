@@ -4,6 +4,7 @@ import org.testng.annotations.Test;
 import ru.lanwen.verbalregex.VerbalExpression;
 import ru.stqa.pft.mantis.model.MailMessage;
 
+import javax.mail.MessagingException;
 import java.util.List;
 
 import static org.testng.Assert.assertTrue;
@@ -29,10 +30,10 @@ public class RegistrationTests extends TestBase {
   }
 
   @Test
-  public void testRegistrationExtraMail() throws Exception {
+  public void testRegistrationExtraMail() throws Exception, MessagingException {
     long now = System.currentTimeMillis();
     String user = String.format("user%s", now);
-    String email = "user2@localhost.localdomain";
+    String email = String.format("user%s@localhost", now);
     String password = "password";
     app.james().createUser(user, password);
     app.registration().start(user, email);
@@ -44,7 +45,7 @@ public class RegistrationTests extends TestBase {
 
   private String findConfirmationLink(List<MailMessage> mailMessages, String email) {
     MailMessage mailMessage = mailMessages.stream().filter((m) -> m.to.equals(email)).findFirst().get();
-    VerbalExpression regex = VerbalExpression.regex().find("http://").nonSpace().build();
+    VerbalExpression regex = VerbalExpression.regex().find("http://").nonSpace().oneOrMore().build();
     return regex.getText(mailMessage.text);
   }
 
