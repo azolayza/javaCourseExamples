@@ -7,9 +7,7 @@ import ru.stqa.pft.addressbook.model.Contacts;
 import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.testng.Assert.assertEquals;
+import static org.testng.AssertJUnit.assertTrue;
 
 public class ContactInGroupTests extends TestBase{
 
@@ -42,24 +40,25 @@ public class ContactInGroupTests extends TestBase{
 
   @Test
   public void testContactAddToGroup(){
-    Contacts before = app.db().contacts();
+    ContactData contactData = app.db().contactNotInGroup();
+    app.contact().selectContactNotGroup(contactData);
     Groups groups = app.db().groups();
-    app.contact().selectContactById(before.iterator().next().getId());
-    app.contact().selectGroup(before);
+    GroupData group = groups.iterator().next();
+    app.contact().selectGroup(group);
     app.contact().addContactToGroup();
-    Contacts after = app.db().contacts();
-    assertThat(before.iterator().next(), equalTo(after.iterator().next()));
-    verifyContactListUI();
+    ContactData contactAfter = app.db().contactById(contactData.getId());
+    assertTrue(contactAfter.getGroups().contains(group));
   }
 
   @Test
   public void testContactRemoveFromGroup() {
-    Contacts contacts = app.db().contacts();
-    app.contact().selectGroupPage(contacts);
-    Contacts before = app.db().contacts();
+    ContactData contactData = app.db().contactInGroup();
+    GroupData groupData = contactData.getGroups().iterator().next();
+    app.contact().getGroupData(groupData);
+    app.contact().selectContactNotInGroup(contactData);
     app.contact().removeContactFromGroup();
-    Contacts after = app.db().contacts();
-    assertThat(contacts.iterator().next(), equalTo(after.iterator().next()));
-    verifyContactListUI();
+    app.goTo().homePage();
+    ContactData contactAfter = app.db().contactById(contactData.getId());
+    assertTrue(contactAfter.getGroups().contains(groupData));
   }
 }

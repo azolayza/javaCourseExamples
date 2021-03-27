@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -210,6 +211,10 @@ public class ContactHelper extends HelperBase{
       new Select(wd.findElement(By.name("group"))).selectByVisibleText(contactData.iterator().next().getGroups().iterator().next().getName());
     }
   }
+
+  public void selectGroup(GroupData group) {
+    wd.findElement(By.xpath(String.format("//select[@name='to_group']/option[@value='%s']", group.getId()))).click();
+  }
   //Метод инициализации кнопки для открытия формы редактирования контакта
  private void initContactModificationById(int id){
    wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s'", id))).click();
@@ -225,5 +230,15 @@ public class ContactHelper extends HelperBase{
     wd.findElement(By.xpath(String.format("//tr[.//input[value='%s']]/td[8]/a", id))).click();
     wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s'", id))).click(); */
  }
+  public void selectContactNotGroup(ContactData contact) {
+    click(By.xpath(String.format("//input[@type='checkbox']", contact.getId())));
+  }
 
+  public void getGroupData(GroupData groupData) {
+    click(By.xpath(String.format("//select[@name='group']/option[text() = '%s']", groupData.getName())));;
+  }
+
+  public void selectContactNotInGroup(ContactData contact) {
+    click(By.xpath(String.format("//input[@type='checkbox']", contact.getId())));
+  }
 }
