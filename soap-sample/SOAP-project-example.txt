@@ -4,3 +4,15 @@ http://wsgeoip.lavasoft.com/ipservice.asmx
 
 документ описания WSDL: 
 http://wsgeoip.lavasoft.com/ipservice.asmx?WSDL 
+
+тестирование багтрекера минтис через СОАП
+http://localhost/mantisbt-2.25.0/api/soap/mantisconnect.php?wsdl
+
+Для работы с Mantis по протоколу SOAP нужно, чтобы в PHP была включена поддержка SOAP. Для того, чтобы включить её (или проверить, что она включена), откройте в текстовом редакторе файл C:\xampp\php\php.ini , найдите там строчку 
+;extension=php_soap.dll
+либо
+;extension=php_soap
+либо
+;extension=soap
+(конкретный вид этой строчки зависит от версии PHP) и раскомментируйте её, то есть удалите точку с запятой в начале (если это уже сделано, то ничего менять не нужно).
+После внесения изменений перезапустите веб-сервер Apache из панели управления XAMPP.
