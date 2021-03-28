@@ -1,0 +1,6 @@
+http://wsgeoip.lavasoft.com/ipservice.asmx 
+
+сервис с примерами SOAP типа АПИ и описание запросов
+
+документ описания WSDL: 
+http://wsgeoip.lavasoft.com/ipservice.asmx?WSDL 

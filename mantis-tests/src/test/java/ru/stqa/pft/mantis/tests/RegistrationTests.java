@@ -2,10 +2,8 @@ package ru.stqa.pft.mantis.tests;
 
 import org.testng.annotations.Test;
 import ru.stqa.pft.mantis.model.MailMessage;
-
 import javax.mail.MessagingException;
 import java.util.List;
-
 import static org.testng.Assert.assertTrue;
 
 public class RegistrationTests extends TestBase {
