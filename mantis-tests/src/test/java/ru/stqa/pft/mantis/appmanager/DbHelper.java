@@ -18,8 +18,10 @@ public class DbHelper {
     sessionFactory = new MetadataSources( registry ).buildMetadata().buildSessionFactory();
   }
 
+  public Users mantisUser(){
     Session session = sessionFactory.openSession();
     session.beginTransaction();
+    Users result =(Users) session.createQuery("from Users where username = 'liza' ").list();
     session.getTransaction().commit();
     session.close();
     return result;

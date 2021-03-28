@@ -32,6 +32,7 @@ public class ChangeUserPasswordTests extends TestBase{
   //авторизация админа через веб и смена пароля юзеру с id-4
   app.session().login("Administrator", "root");
   app.session().usersList();
+  Users mantisUser = app.db().mantisUser();
   app.session().selectUser(String.valueOf(mantisUser.getId()));
   app.session().changePassword();
   //Ожидаем письмо и берем ссылку для сброса пароля
