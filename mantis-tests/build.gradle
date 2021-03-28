@@ -13,6 +13,9 @@ dependencies {
     compile 'commons-net:commons-net:3.4'
     compile 'org.subethamail:subethasmtp:3.1.7'
     compile 'ru.lanwen.verbalregex:java-verbal-expressions:1.8'
+    compile 'mysql:mysql-connector-java:8.0.23'
+    implementation 'org.hibernate:hibernate-core:5.4.20.Final'
+
 
 }
 
