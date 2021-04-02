@@ -1,9 +1,9 @@
 package ru.stqa.pft.mantis.appmanager;
 
 import biz.futureware.mantis.rpc.soap.client.*;
-import org.testng.SkipException;
 import ru.stqa.pft.mantis.model.Issue;
 import ru.stqa.pft.mantis.model.Project;
+
 import javax.xml.rpc.ServiceException;
 import java.math.BigInteger;
 import java.net.MalformedURLException;
@@ -27,7 +27,7 @@ public class SoapHelper {
             .map((p) -> new Project().withId(p.getId().intValue()).withName(p.getName())).collect(Collectors.toSet());
   }
 
-  private MantisConnectPortType getMantisConnect() throws ServiceException, MalformedURLException {
+  public MantisConnectPortType getMantisConnect() throws ServiceException, MalformedURLException {
     MantisConnectPortType mc = new MantisConnectLocator()
             .getMantisConnectPort(new URL("http://localhost/mantisbt-2.25.0/api/soap/mantisconnect.php"));
     return mc;
@@ -49,20 +49,5 @@ public class SoapHelper {
             .withDescription(newIssueData.getDescription())
             .withProject(new Project().withId(newIssueData.getId().intValue())
             .withName(newIssueData.getProject().getName()));
-  }
-
-  public boolean isIssueOpen(int issueId) throws MalformedURLException, ServiceException, RemoteException {
-    MantisConnectPortType mc = getMantisConnect();
-    IssueData issueData = new IssueData();
-    IssueData issue= mc.mc_issue_get("Administrator", "root", BigInteger.valueOf(issueId));
-    issueData.setStatus(issue.getStatus());
-    issueData.setResolution(issue.getResolution());
-    return isIssueOpen(issueId);
-}
-
-  public void skipIfNotFixed(int issueId) throws RemoteException, ServiceException, MalformedURLException {
-    if (isIssueOpen(issueId)) {
-      throw new SkipException("Ignored because of issue " + issueId);
-    }
   }
 }
