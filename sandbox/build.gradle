@@ -10,3 +10,7 @@ dependencies {
     implementation 'junit:junit:4.12'
     compile 'org.testng:testng:7.0.0'
 }
+
+test {
+    useTestNG()
+    }
