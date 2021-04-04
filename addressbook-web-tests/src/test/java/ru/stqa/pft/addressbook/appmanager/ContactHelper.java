@@ -8,7 +8,6 @@ import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 import ru.stqa.pft.addressbook.model.GroupData;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -95,11 +94,6 @@ public class ContactHelper extends HelperBase{
     fillContactForm(contact, true);
     submitUpdateContactForm();
     contactCache = null;
-  }
-
-  public void delete(int index) {
-    selectContact(index);
-    submitDelete();
   }
 
   public void delete(ContactData contact) {
@@ -230,7 +224,7 @@ public class ContactHelper extends HelperBase{
     wd.findElement(By.xpath(String.format("//tr[.//input[value='%s']]/td[8]/a", id))).click();
     wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s'", id))).click(); */
  }
-  public void selectContactNotGroup(ContactData contact) {
+  public void selectContact(ContactData contact) {
     click(By.xpath(String.format("//input[@type='checkbox']", contact.getId())));
   }
 
@@ -241,4 +235,11 @@ public class ContactHelper extends HelperBase{
   public void selectContactNotInGroup(ContactData contact) {
     click(By.xpath(String.format("//input[@type='checkbox']", contact.getId())));
   }
+
+  public void selectContactWithoutGroup(ContactData contact) {
+    new Select(wd.findElement(By.name("group"))).selectByVisibleText("[none]");
+    click(By.xpath(String.format("//input[@type='checkbox']", contact.getId())));
+  }
+
+
 }
