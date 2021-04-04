@@ -3,7 +3,6 @@ package ru.stqa.pft.mantis.appmanager;
 import org.openqa.selenium.By;
 import ru.lanwen.verbalregex.VerbalExpression;
 import ru.stqa.pft.mantis.model.MailMessage;
-
 import java.util.List;
 
 public class SessionHelper extends HelperBase{
@@ -19,6 +18,12 @@ public class SessionHelper extends HelperBase{
     click(By.xpath("//form[@id = 'login-form']//input[@type='submit']"));
   }
 
+  public void changePassword(String confirmationLink, String password) {
+    wd.get(confirmationLink);
+    type(By.name("password"),password);
+    type(By.name("password_confirm"),password);
+  }
+
   public void updateUserPassword(String confirmationLink,String username, String password) {
     wd.get(confirmationLink);
     type(By.name("realname"), username);
@@ -32,7 +37,7 @@ public class SessionHelper extends HelperBase{
   }
 
   public void selectUser(String userId) {
-    wd.get(app.getProperty("web.baseUrl") + String.format("/manage_user_edit_page.php?user_id=%s",userId));
+    wd.get(app.getProperty("web.baseUrl") + String.format("/manage_user_edit_page.php?user_id=%s", userId));
   }
 
   public void changePassword(){

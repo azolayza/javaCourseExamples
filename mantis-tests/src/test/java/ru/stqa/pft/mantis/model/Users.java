@@ -1,61 +1,37 @@
 package ru.stqa.pft.mantis.model;
 
-import javax.persistence.*;
-import java.util.Objects;
 
-@Entity
-  @Table(name = "mantis_user_table")
+import com.google.common.collect.ForwardingSet;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
-public class Users {
-    @Id
-    @Column(name = "id")
-    private int id = Integer.MAX_VALUE;
+public class Users extends ForwardingSet<UserData> {
 
-    @Column(name = "username")
-    private String username;
+  private Set<UserData> delegate;
 
-    @Column(name = "email")
-    private String email;
-
-    @Column(name = "password")
-    private String password;
-
-  public int getId() {
-    return id;
+  public Users(Users users) {
+    this.delegate = new HashSet<UserData>(users.delegate);
   }
 
-  public String getUsername() {
-    return username;
-  }
-
-  public String getEmail() {
-    return email;
-  }
-
-  public String getPassword() {
-    return password;
+  public Users(Collection<UserData> users) {
+    this.delegate = new HashSet<UserData>(users);
   }
 
   @Override
-  public String toString() {
-    return "Users{" +
-            "id=" + id +
-            ", username='" + username + '\'' +
-            ", email='" + email + '\'' +
-            ", password='" + password + '\'' +
-            '}';
+  protected Set<UserData> delegate() {
+    return delegate;
   }
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (!(o instanceof Users)) return false;
-    Users users = (Users) o;
-    return getId() == users.getId() && Objects.equals(getUsername(), users.getUsername()) && Objects.equals(getEmail(), users.getEmail());
+  public Users withAdded(UserData user){
+    Users users = new Users(this);
+    users.add(user);
+    return users;
   }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(getId(), getUsername(), getEmail());
+  public Users withoutAdded(UserData user){
+    Users users = new Users(this);
+    users.remove(user);
+    return users;
   }
 }

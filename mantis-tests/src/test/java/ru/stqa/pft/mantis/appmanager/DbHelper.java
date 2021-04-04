@@ -5,7 +5,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import ru.stqa.pft.mantis.model.Users;
+import ru.stqa.pft.mantis.model.UserData;
+import java.util.List;
 
 public class DbHelper {
 
@@ -18,12 +19,13 @@ public class DbHelper {
     sessionFactory = new MetadataSources( registry ).buildMetadata().buildSessionFactory();
   }
 
-  public Users mantisUser(){
+  public UserData mantisUser(){
     Session session = sessionFactory.openSession();
     session.beginTransaction();
-    Users result =(Users) session.createQuery("from Users where username = 'liza' ").list();
+    List<UserData> result = session.createQuery("from Users where email like '%@localhost'").list();
     session.getTransaction().commit();
     session.close();
-    return result;
+    return result.iterator().next();
   }
+
 }

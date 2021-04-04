@@ -2,10 +2,8 @@ package ru.stqa.pft.mantis.tests;
 
 import org.testng.annotations.Test;
 import ru.stqa.pft.mantis.model.MailMessage;
-
 import javax.mail.MessagingException;
 import java.util.List;
-
 import static org.testng.Assert.assertTrue;
 
 public class RegistrationTests extends TestBase {
@@ -30,7 +28,6 @@ public class RegistrationTests extends TestBase {
 
   @Test
   public void testRegistrationExtraMail() throws Exception, MessagingException {
-    skipIfNotFixed(1);
     long now = System.currentTimeMillis();
     String user = String.format("user%s", now);
     String email = String.format("user%s@localhost", now);
