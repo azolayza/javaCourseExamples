@@ -1,29 +1,24 @@
 package ru.stqa.pft.mantis.tests;
 
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.mantis.appmanager.HttpSession;
 import ru.stqa.pft.mantis.model.MailMessage;
 import ru.stqa.pft.mantis.model.UserData;
 
-import java.io.IOException;
 import java.util.List;
 
 import static org.testng.AssertJUnit.assertTrue;
 
 public class ChangeUserPasswordTests extends TestBase{
 
-  @BeforeSuite(alwaysRun = true)
-  public void setUp() throws IOException {
-    app.init();
-  }
-
-  //@BeforeMethod
+  @BeforeMethod
   public void startMailServer(){
     app.mail().start();
   }
 
-  @Test
+  @Test (enabled = false)
   public void testChangeUserPassword() throws Exception {
   //авторизация админа через веб и смена пароля юзеру
   app.session().login("Administrator", "root");
@@ -50,7 +45,27 @@ public class ChangeUserPasswordTests extends TestBase{
   assertTrue(httpSession.login(userName, "password1"));
   }
 
-  //@AfterMethod(alwaysRun = true)
+
+  @Test
+  public void testChangePasswordByAdmin() throws Exception {
+    String email = "user1@localhost";
+    String userName = "user1";
+    String newPassword = "password1";
+    app.session().login("Administrator", "root");
+    app.session().usersList();
+    app.session().openUserPage(userName);
+    app.session().changePassword();
+    //Ожидаем письмо и берем ссылку для сброса пароля
+    List<MailMessage> mailMessages = app.mail().waitForMail(2, 10000);
+    String confirmationLink = app.session().findConfirmationLink(mailMessages,  email);
+    app.session().updateUserPassword(confirmationLink, userName, newPassword);
+    //Логин по http протоколу юзером с новым паролем
+    HttpSession httpSession = app.newSession();
+    assertTrue(httpSession.login(userName, newPassword));
+  }
+
+
+  @AfterMethod(alwaysRun = true)
   public void stopMailServer(){
     app.mail().stop();
   }

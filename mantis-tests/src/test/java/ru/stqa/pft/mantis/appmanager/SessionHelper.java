@@ -40,6 +40,10 @@ public class SessionHelper extends HelperBase{
     wd.get(app.getProperty("web.baseUrl") + String.format("/manage_user_edit_page.php?user_id=%s", userId));
   }
 
+  public void openUserPage(String username) {
+    click(By.linkText(username));
+  }
+
   public void changePassword(){
     click(By.xpath("//form[@id = 'manage-user-reset-form']//input[@type='submit']"));
   }
