@@ -9,6 +9,7 @@ public class LoginTests extends TestBase{
 
   @Test
   public void testLogin() throws Exception{
+    skipIfNotFixed(0000002);
     HttpSession httpSession = app.newSession();
     assertTrue(httpSession.login("Administrator", "root"));
     assertTrue(httpSession.isLoggedInAs("Administrator"));

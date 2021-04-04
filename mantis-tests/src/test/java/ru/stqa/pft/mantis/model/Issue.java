@@ -2,6 +2,7 @@ package ru.stqa.pft.mantis.model;
 
 public class Issue {
   private int id;
+  private String name;
   private String summary;
   private String description;
   private Project project;
@@ -14,6 +15,15 @@ public class Issue {
 
   public Issue withId(int id) {
     this.id = id;
+    return this;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public Issue withName(String name) {
+    this.name = name;
     return this;
   }
 
